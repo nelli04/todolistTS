@@ -1,31 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {Todolist} from "./AppComponent";
+import {TaskType,Todolist} from './Todolist';
+
+export type ButNameType = 'All' | 'Active' | 'Completed'
 
 function App() {
-    const shapka = 'What to learn';
-    const shapka1 = 'What to learn1';
-    const shapka2= 'What to learn111111111111111111111';
-    const shapka3 = 'What to learn2222222222222222222222222';
 
-    const tasks1 = [
+     let[tasks1, setTasks1] = useState<Array<TaskType>>([
         { id: 1, title: "HTML&CSS", isDone: true },
         { id: 2, title: "JS", isDone: true },
         { id: 3, title: "ReactJS", isDone: false }
-    ]
-    const tasks2 = [
-        { id: 1, title: "Hello world", isDone: true },
-        { id: 2, title: "I am Happy", isDone: false },
-        { id: 3, title: "Yo", isDone: false }
-    ]
+    ])
 
+    const removeTask = (taskId: number, str: string) => {
+            setTasks1(tasks1 = tasks1.filter((t) => t.id !== taskId))
+
+    }
 
     return (
         <div className="App">
-            <Todolist shapkaOne = {shapka1} tasks1 = {tasks1}/>
-            <Todolist shapka = {shapka2} shapkaOne = {shapka3} tasks1 = {tasks2}/>
+            <Todolist title="What to learn"
+                      tasks={tasks1}
+                      removeTask={ removeTask}
+            />
         </div>
     );
 }
 
 export default App;
+
+//https://www.youtube.com/watch?v=y32tGzV-e1Y&t=884s
