@@ -17,12 +17,16 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
     const [titleTask, setTitleTask] = useState('');
+    const addTasksHandler = () => {
+        props.addTask(titleTask)
+        setTitleTask('')
+    }
 
     return <div>
         <h3>{props.title}</h3>
         <div>
             <input value={titleTask} onChange={ (event: ChangeEvent<HTMLInputElement>) => setTitleTask(event.currentTarget.value) }/>
-            <button onClick={props.addTask}>+</button>
+            <button onClick={addTasksHandler}>+</button>
         </div>
         <ul>
             {
