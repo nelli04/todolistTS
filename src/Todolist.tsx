@@ -6,7 +6,6 @@ type TaskType = {
     title: string
     isDone: boolean
 }
-
 type PropsType = {
     title: string
     tasks: Array<TaskType>
@@ -16,24 +15,19 @@ type PropsType = {
 }
 
 export function Todolist(props: PropsType) {
-
     let [title, setTitle] = useState("")
-
     const addTask = () => {
         props.addTask(title);
         setTitle("");
     }
-
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
-
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.charCode === 13) {
             addTask();
         }
     }
-
     const onAllClickHandler = () => props.changeFilter("all");
     const onActiveClickHandler = () => props.changeFilter("active");
     const onCompletedClickHandler = () => props.changeFilter("completed");
