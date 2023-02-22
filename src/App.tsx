@@ -6,6 +6,7 @@ import { v1 } from 'uuid';
 export type FilterValuesType = "all" | "active" | "completed";
 
 function App() {
+
     let [tasks, setTasks] = useState([
         { id: v1(), title: "HTML&CSS", isDone: true },
         { id: v1(), title: "JS", isDone: true },
