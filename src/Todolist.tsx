@@ -53,7 +53,6 @@ export function Todolist(props: PropsType) {
         setButton('completed')
     };
 
-
     return <div>
         <h3>{props.title}</h3>
         <div>
@@ -73,6 +72,7 @@ export function Todolist(props: PropsType) {
                     const changeCheckboxHandler = (e: ChangeEvent<HTMLInputElement>) => {
                         props.changeCheckbox(t.id, e.currentTarget.checked)
                     }
+
                     return <li key={t.id} className={t.isDone ? s.is_done : ''}>
                         <input type="checkbox" checked={t.isDone} onChange={changeCheckboxHandler}/>
                         <span>{t.title}</span>
