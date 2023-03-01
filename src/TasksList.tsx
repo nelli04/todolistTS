@@ -13,6 +13,7 @@ const TasksList: FC<TasksListPropsType> = (props): JSX.Element => {
         props.tasks.length
         ? props.tasks.map((task) => {
             const taskClasses = task.isDone ? "task task-done" : "task"
+
             const removeTaskHandler = () => props.removeTask(task.id, props.tasksID)
             const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) =>
                 props.changeTaskStatus(task.id, e.currentTarget.checked, props.tasksID)
@@ -35,5 +36,5 @@ const TasksList: FC<TasksListPropsType> = (props): JSX.Element => {
         </ul>
     );
 };
-//https://habr.com/ru/post/540442/
+//
 export default TasksList;
