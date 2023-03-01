@@ -46,12 +46,15 @@ function App (): JSX.Element {
     //BLL:
 
     const removeTask = (taskId: string, tasksID: string) => {
-        const tasksForTodo = tasks[tasksID]
-        const filteredTasks = tasksForTodo.filter(t => t.id !== tasksID)
-        const copyTask = {...tasks}
-        copyTask[tasksID] = filteredTasks
-        setTasks(copyTask)
+        //const tasksForTodo = tasks[tasksID]
+        //const filteredTasks = tasksForTodo.filter(t => t.id !== tasksID)
+        //const copyTask = {...tasks}
+        //copyTask[tasksID] = filteredTasks
+        //setTasks(copyTask)
+
+        setTasks({...tasks, [tasksID]: tasks[tasksID].filter(t => t.id !== tasksID)})
     }
+
     const addTask = (title: string, tasksID: string) => {
         const newTask: TaskType = {id: v1(), title: title, isDone: false}
         const tasksId = tasks[tasksID]
@@ -80,6 +83,7 @@ function App (): JSX.Element {
         }
     }
     const removeTasks = (tasksID: string) => {
+
         setTodo(todo.filter(f => f.id !== tasksID))
         //delete tasks[tasksID]
         const copyRemove = {...tasks}
@@ -101,6 +105,7 @@ function App (): JSX.Element {
                     addTask={addTask}
                     changeTaskStatus={changeTaskStatus}
                     removeTasks={removeTasks}
+                    tasksID={t.id}
                 />
             </div>
         )
