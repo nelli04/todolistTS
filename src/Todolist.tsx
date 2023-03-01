@@ -5,7 +5,7 @@ import {FilterValuesType} from "./App";
 type OnClickHandler = () => void
 
 type TodoListPropsType = {
-    //tasksID: string
+    tasksID: string
     id: string
     title: string
     filter: FilterValuesType
@@ -42,9 +42,9 @@ const TodoList: FC<TodoListPropsType> = (props) => {
         setTitle(e.currentTarget.value)
     }
     const addTask = () => {
-        const trimmedTitle = title.trim()
-        if(trimmedTitle){
-            props.addTask(trimmedTitle, props.tasksID)
+        /*const trimmedTitle = */
+        if(title.trim()){
+            props.addTask(title.trim(), props.tasksID)
         } else {
             setError(true)
         }
